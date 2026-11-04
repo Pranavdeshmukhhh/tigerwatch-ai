@@ -1,0 +1,6 @@
+-r requirements-video.txt
+-r requirements-browser.txt
+pytest==9.1.1
+PyYAML==6.0.3
+ruff==0.17.2
+psycopg[binary]==3.3.6

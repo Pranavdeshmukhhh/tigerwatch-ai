@@ -1,0 +1,85 @@
+name: VisualWatch free monitor
+'on':
+  workflow_dispatch:
+  schedule:
+    # Hourly default reduces runner minutes. For 30 minutes use '17,47 * * * *'.
+    - cron: '17 * * * *'
+permissions:
+  contents: read
+concurrency:
+  group: tigerwatch-monitor
+  cancel-in-progress: false
+jobs:
+  monitor:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6, verified 2026-10-25
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.11'
+      - name: Install pinned runtime
+        run: python -m pip install -r requirements.txt
+      - name: Install normal public browser
+        if: vars.SOURCE_KIND == 'browser'
+        run: |
+          python -m pip install -r requirements-browser.txt
+          python -m playwright install --with-deps chromium
+      - name: Monitor approved sources
+        env:
+          PYTHONUNBUFFERED: '1'
+          GITHUB_REPOSITORY_VISIBILITY: ${{ github.event.repository.private && 'private' || 'public' }}
+          FREE_TIER_ONLY: 'true'
+          FREE_PLANS_CONFIRMED: ${{ vars.FREE_PLANS_CONFIRMED || 'false' }}
+          SOURCE_KIND: ${{ vars.SOURCE_KIND || 'meta' }}
+          MONITOR_MODE: ${{ vars.MONITOR_MODE || 'general' }}
+          ALERTS_ENABLED: ${{ vars.ALERTS_ENABLED || 'true' }}
+          SEND_DAILY_DIGEST: ${{ vars.SEND_DAILY_DIGEST || 'false' }}
+          BROWSER_MAX_POSTS: ${{ vars.BROWSER_MAX_POSTS || '200' }}
+          BROWSER_MAX_SCROLLS: ${{ vars.BROWSER_MAX_SCROLLS || '60' }}
+          BROWSER_SCROLL_SECONDS: ${{ vars.BROWSER_SCROLL_SECONDS || '3' }}
+          BROWSER_HEADLESS: 'true'
+          TARGET_DESCRIPTION: ${{ vars.TARGET_DESCRIPTION }}
+          TARGETS_JSON: ${{ vars.TARGETS_JSON }}
+          TARGET_KIND: ${{ vars.TARGET_KIND }}
+          REQUIRE_PHOTOGRAPH: ${{ vars.REQUIRE_PHOTOGRAPH }}
+          MATCH_THRESHOLD: ${{ vars.MATCH_THRESHOLD || vars.TIGER_CONFIDENCE || '0.85' }}
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          HASHTAGS: ${{ vars.HASHTAGS }}
+          ACCOUNTS: ${{ vars.ACCOUNTS }}
+          GRAPH_API_VERSION: ${{ vars.GRAPH_API_VERSION || 'v26.0' }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'auto' }}
+          AI_ANALYSIS_RIGHTS_CONFIRMED: ${{ vars.AI_ANALYSIS_RIGHTS_CONFIRMED || 'false' }}
+          MAX_AI_CALLS_PER_RUN: ${{ vars.MAX_AI_CALLS_PER_RUN || '4' }}
+          MAX_AI_CALLS_PER_DAY: ${{ vars.MAX_AI_CALLS_PER_DAY || '20' }}
+          AI_MIN_INTERVAL_SECONDS: ${{ vars.AI_MIN_INTERVAL_SECONDS || '6' }}
+          MAX_ALERTS_PER_RUN: ${{ vars.MAX_ALERTS_PER_RUN || '3' }}
+          MAX_ALERTS_PER_DAY: ${{ vars.MAX_ALERTS_PER_DAY || '10' }}
+          ALERT_MIN_INTERVAL_SECONDS: ${{ vars.ALERT_MIN_INTERVAL_SECONDS || '4' }}
+          MAX_POSTS_PER_SOURCE: ${{ vars.MAX_POSTS_PER_SOURCE || '30' }}
+          MAX_PAGES_PER_SOURCE: ${{ vars.MAX_PAGES_PER_SOURCE || '3' }}
+          MAX_META_CALLS_PER_RUN: ${{ vars.MAX_META_CALLS_PER_RUN || '80' }}
+          MAX_CAROUSEL_IMAGES: ${{ vars.MAX_CAROUSEL_IMAGES || '20' }}
+          MAX_POST_AGE_HOURS: ${{ vars.MAX_POST_AGE_HOURS || '24' }}
+          MAX_QUEUE_ITEMS_PER_RUN: ${{ vars.MAX_QUEUE_ITEMS_PER_RUN || '60' }}
+          MAX_QUEUE_AGE_HOURS: ${{ vars.MAX_QUEUE_AGE_HOURS || '72' }}
+          MAX_RETRY_ATTEMPTS: ${{ vars.MAX_RETRY_ATTEMPTS || '6' }}
+          RETRY_BASE_SECONDS: ${{ vars.RETRY_BASE_SECONDS || '300' }}
+          DEDUP_RETENTION_DAYS: ${{ vars.DEDUP_RETENTION_DAYS || '90' }}
+          TIGER_CONFIDENCE: ${{ vars.TIGER_CONFIDENCE || '0.85' }}
+          REVIEW_SCORE: ${{ vars.REVIEW_SCORE || '0.65' }}
+          SEND_PHOTO: ${{ vars.SEND_PHOTO || 'false' }}
+          PHOTO_RESHARE_RIGHTS_CONFIRMED: ${{ vars.PHOTO_RESHARE_RIGHTS_CONFIRMED || 'false' }}
+          PHOTO_RESHARE_SOURCES: ${{ vars.PHOTO_RESHARE_SOURCES }}
+          PHOTO_RESHARE_MEDIA_IDS: ${{ vars.PHOTO_RESHARE_MEDIA_IDS }}
+        run: python main.py

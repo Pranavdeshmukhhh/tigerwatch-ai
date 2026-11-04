@@ -1,0 +1,28 @@
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 24.0 -> 26.2.2
+[notice] To update, run: pip install --upgrade pip
+.......................................................sssssssssss...... [ 58%]
+...................................................                      [100%]
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_postgres.py:41: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres.py:49: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres.py:59: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres.py:66: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres.py:72: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [2] tests/test_postgres.py:79: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres.py:92: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres.py:116: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres.py:133: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres.py:141: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+112 passed, 11 skipped in 0.71s
+SIMULATED: synthetic pixels, mocked Gemini and Telegram; no network or wildlife accuracy verification.
+{
+  "queue": {
+    "alerted": 1
+  },
+  "today": {
+    "ai": 1,
+    "alerts": 1
+  }
+}

@@ -1,0 +1,7 @@
+-r requirements.txt
+# Normal public-page browser, without stealth/login/cookie import features.
+playwright==1.64.1
+# pyee 14 requires Python 3.12; retain 3.11 support for the Windows/cloud runtime.
+pyee==13.0.1
+greenlet==3.5.6
+typing-extensions==4.16.0

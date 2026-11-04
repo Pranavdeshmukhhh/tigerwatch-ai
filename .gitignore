@@ -1,0 +1,25 @@
+.env
+.env.*
+!.env.example
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.venv/
+.DS_Store
+test-results/
+*.zip
+.env-setup-*
+.env.deploy-*
+watch.json
+watches*.json
+review*.json
+public-posts*.json
+.visualwatch-*
+# Root-level watch definitions and private JSON exports; fixtures under tests remain tracked.
+/*.json

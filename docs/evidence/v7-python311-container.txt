@@ -1,0 +1,54 @@
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 24.0 -> 26.2.2
+[notice] To update, run: pip install --upgrade pip
+................s....................................................... [ 18%]
+.......................................ssssssssssssssssssssssssss....... [ 37%]
+..........sssssss....................................................... [ 56%]
+........................................................................ [ 75%]
+........................................................................ [ 94%]
+....................                                                     [100%]
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_dashboard_browser.py:27: Chromium unavailable in this execution environment
+SKIPPED [1] tests/test_postgres.py:50: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres.py:58: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres.py:68: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres.py:75: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres.py:81: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [2] tests/test_postgres.py:88: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres.py:101: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres.py:125: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres.py:142: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres.py:150: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres.py:175: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres.py:187: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres.py:202: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres_v7.py:14: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres_v7.py:32: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres_v7.py:47: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres_v7.py:63: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [2] tests/test_postgres_v7.py:77: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres_v7.py:86: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres_v7.py:102: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres_v7.py:115: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres_v7.py:137: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres_v7.py:151: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_postgres_v7.py:158: TEST_POSTGRES_DSN not set; local PostgreSQL tests optional
+SKIPPED [1] tests/test_public_browser.py:103: Chromium not installed; install it to run rendered-page integration tests
+SKIPPED [1] tests/test_public_browser.py:116: Chromium not installed; install it to run rendered-page integration tests
+SKIPPED [1] tests/test_public_browser.py:137: Chromium not installed; install it to run rendered-page integration tests
+SKIPPED [1] tests/test_public_browser.py:146: Chromium not installed; install it to run rendered-page integration tests
+SKIPPED [1] tests/test_public_browser.py:158: Chromium not installed; install it to run rendered-page integration tests
+SKIPPED [1] tests/test_public_browser.py:168: Chromium not installed; install it to run rendered-page integration tests
+SKIPPED [1] tests/test_public_browser.py:176: Chromium not installed; install it to run rendered-page integration tests
+346 passed, 34 skipped in 4.78s
+SIMULATED: synthetic pixels, mocked Gemini and Telegram; no network or wildlife accuracy verification.
+{
+  "queue": {
+    "alerted": 1
+  },
+  "today": {
+    "ai": 1,
+    "alerts": 1
+  }
+}

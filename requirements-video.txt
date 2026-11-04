@@ -1,0 +1,4 @@
+-r requirements.txt
+# Optional local video/camera decoding; CPU-only, no inference subscription.
+opencv-python-headless==5.0.0.93
+numpy==2.4.6
